@@ -1,0 +1,23 @@
+extends layout
+
+block content
+	.container( ng-controller="Foro", ng-init="cargarForo()" )
+		h1 Foro 
+		form( action="javascript:void(0);" )
+			p Nombre 
+			input( type="text", ng-model="nombre" )
+			br
+			p Mensaje 
+			input( type="textarea", ng-model="mensaje" )
+			br
+			input( type="submit", value="Guardar", class="btn btn-success", ng-click="guardarForo()" )
+			input( type="button", value="Limpiar", class="btn btn-danger", ng-click="limpiarDatos()" )
+		table( class="table", ng-repeat="item in foro")
+			thead
+				tr
+					th Nombre: {{item.nombre}}
+					th {{item.fecha}}
+			tbody
+				tr
+					td {{item.mensaje}}
+					td
